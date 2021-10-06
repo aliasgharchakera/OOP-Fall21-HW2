@@ -13,11 +13,8 @@ void CreateDungeon(int width, int height)
     */
    char dungeon[width*height];
    int bruh;
-   int done = 0;
-   int randomized = width;
    for (int i = 0; i < width*height; i++){
        bruh = i%width;
-       //cout << bruh << ", " << i << endl;
        if ((i < width) | (bruh == 0) | (bruh == (width - 1)) | (i > width*(height - 1))){
             dungeon[i] = 'W';
        }
@@ -46,14 +43,14 @@ void CreateDungeon(int width, int height)
    }
    dungeon[width + 1] = 'P';
    dungeon[width*height - width - 2] = 'X';
-   int j;
-   for (int i = 0; i < width*height; i++){
-       cout << dungeon[i] << ", ";
-       j = (i + 1)%width;
-       if (j == 0){
-           cout << endl;
-       }
-   }
+//    int j;
+//    for (int i = 0; i < width*height; i++){
+//        cout << dungeon[i] << ", ";
+//        j = i%(width);
+//        if (j == 0){
+//            cout << endl;
+//        }
+//    }
 
 }
 int main(){
@@ -67,7 +64,7 @@ int main(){
     //     else
     //         cout << "Random number is not " << n << " and is " << var << endl;
     // }
-    CreateDungeon(8, 8);
+    CreateDungeon(10, 10);
     //cout << "bruh" << endl;
     return 0;
 }
