@@ -224,8 +224,8 @@ void Traversal(char* dungeon, Point& startPoint, cPoint& exitPoint, cint width, 
                     P.food += food;
                     FoodStatements();
                 }
-                else if (location == 'E'){
-
+                else if (location == 'E'){ //calling combat since enemies have been encountered
+                    Combat(P, rand () % 3 + 2);
                 }
                 else if (location == 'X'){
                     cout << "You won!" << endl;
@@ -258,8 +258,8 @@ void Traversal(char* dungeon, Point& startPoint, cPoint& exitPoint, cint width, 
                     P.food += food;
                     FoodStatements();
                 }
-                else if (location == 'E'){
-
+                else if (location == 'E'){ //calling combat since enemies have been encountered
+                    Combat(P, rand () % 3 + 2);
                 }
                 else if (location == 'X'){
                     cout << "You won!" << endl;
@@ -292,8 +292,8 @@ void Traversal(char* dungeon, Point& startPoint, cPoint& exitPoint, cint width, 
                     P.food += food;
                     FoodStatements();
                 }
-                else if (location == 'E'){
-
+                else if (location == 'E'){ //calling combat since enemies have been encountered
+                    Combat(P, rand () % 3 + 2);
                 }
                 else if (location == 'X'){
                     cout << "You won!" << endl;
@@ -324,23 +324,47 @@ void Traversal(char* dungeon, Point& startPoint, cPoint& exitPoint, cint width, 
             cout << "Your health ended, you're dead!" <<endl;
             break;
         }
+        if (P.alive == false){
+            cout << "You DIED!" << endl;
+            break;
+        }
    }
    //exitPoint.x = P.x; exitPoint.y = P.y;
    cout << "Game Ended!" << endl; //when the loop ends/breaks the game ends 
 }
 
-void Combat(Player& player, int enemies)
+void Combat(Player &player, int enemies)
 {
     /*
     *   ADD YOUR CODE HERE AS REQUIRED
     */
-//    for (int i = 0; i < enemies; i++){
-//        while (true){
-//            int pprob, eprob;
-//            pprob = rand () % 100 + 1; eprob = rand () % 100 + 1;
-//            if (pprob > ) 
-//        } 
-//    }
+    //Player p1;
+    // int enemy = rand()%2 + 2;
+    // enemies +=enemy;
+    int var, e_dead = 0;
+    while (enemies>0 & player.alive)
+    {
+        var = rand() % 3;
+        if (var == 1)
+        {
+            HitStatements();
+            enemies--; e_dead++;
+            cout << e_dead << " enem(ies) down " << enemies << " to go" << endl;
+        }
+        var = rand() % 10;
+        if (var == 2)
+        {
+            player.health--;
+            GetHitStatements();
+            cout << "You have " << player.health << " health left!" << endl;
+        }
+        if (player.health == 0){
+            player.alive = false;
+        }
+    }
+    if (enemies == 0){
+        cout << "Great Job, you knocked em all out!" <<endl;
+    }
 }
 
 char *CreateDungeon(int width, int height,Point &startPoint, Point &exitPoint)
