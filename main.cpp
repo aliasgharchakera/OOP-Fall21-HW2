@@ -62,6 +62,11 @@ int main ()
     int width; int height;
     cout << "Enter the width of the dungeon: "; cin >> width;
     cout << "Enter the height of the dungeon: "; cin >> height;
+    while ((width < 8) | (height < 8)){
+        cout << "The width or height of the dungeon cannot be less than 8" << endl;
+        cout << "Enter the width of the dungeon again: "; cin >> width;
+        cout << "Enter the height of the dungeon again: "; cin >> height;
+    }
     /*
     *   ADD YOUR CODE HERE IF REQUIRED
     */
@@ -116,11 +121,57 @@ void FoodStatements()
    }
 }
 
+void TrapStatements()
+{
+    /*
+    *   ADD YOUR CODE HERE AS REQUIRED
+
+    */
+   int r = rand() % 2;
+   if(r==0){
+       cout<<"You have hit a trap!"<<endl;
+   }
+   else if(r==1){
+       cout<<"You fell in a hole!"<<endl;
+   }
+   else{
+       cout<<"You were abducted by aliens!!"<<endl;
+   } 
+}
+
+
+void FoodStatements()
+{
+    /*
+    *   ADD YOUR CODE HERE AS REQUIRED
+    */
+   int r = rand()%2;
+   if(r==0){
+       cout<<"Picked up energy drink!!"<<endl;
+   }
+   else if (r==1){
+       cout<<"Picked up Krazy Hamborger!!"<<endl;
+   }
+   else{
+    cout<<"You ate DzNuts(Dried Fruit)!!"<<endl;
+   }
+}
+
 void HitStatements()
 {
     /*
     *   ADD YOUR CODE HERE AS REQUIRED
     */
+   int r = rand()%2;
+   if (r==0){
+       cout<<"You win!!FATALITY!"<<endl;
+   } 
+   else if(r==1){
+       cout<<"Your 42069 kicks sent the opponent straight to HELL!!"<<endl;
+   }
+   else{
+       cout<<"The opponent died mysteriously!"<<endl;
+   }
 }
 
 void GetHitStatements()
@@ -128,6 +179,16 @@ void GetHitStatements()
     /*
     *   ADD YOUR CODE HERE AS REQUIRED
     */
+   int r = rand()%2;
+   if (r==0){
+       cout<<"You got RKO'd outta nowhere"<<endl;
+   } 
+   else if(r==1){
+       cout<<"You got HIT!!"<<endl;
+   }
+   else{
+       cout<<"You have been stunned!!"<<endl;
+   }
 }
 
 void Traversal(char* dungeon, Point& startPoint, cPoint& exitPoint, cint width, cint height)
@@ -139,7 +200,7 @@ void Traversal(char* dungeon, Point& startPoint, cPoint& exitPoint, cint width, 
    Player P;
    P.x = startPoint.x; P.y = startPoint.y;
    while (true){
-        cout << "Which direct would you like to move in: \n";
+        cout << "Which direction would you like to move in: \n";
         cout << "W to go up \nS to go down \nD to go right \nA to go left \nPress X if you want to give up and die.\n";
         cin >> direction;
         if ((direction == 'w') |(direction == 'W')){
@@ -308,7 +369,13 @@ void Combat(Player& player, int enemies)
     /*
     *   ADD YOUR CODE HERE AS REQUIRED
     */
-   
+//    for (int i = 0; i < enemies; i++){
+//        while (true){
+//            int pprob, eprob;
+//            pprob = rand () % 100 + 1; eprob = rand () % 100 + 1;
+//            if (pprob > ) 
+//        } 
+//    }
 }
 
 char *CreateDungeon(int width, int height,Point &startPoint, Point &exitPoint)
