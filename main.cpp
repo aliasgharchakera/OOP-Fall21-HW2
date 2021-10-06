@@ -62,7 +62,7 @@ int main ()
     int width; int height;
     cout << "Enter the width of the dungeon: "; cin >> width;
     cout << "Enter the height of the dungeon: "; cin >> height;
-    while ((width < 8) | (height < 8)){
+    while ((width < 8) | (height < 8)){ //in case the input is less than 8
         cout << "The width or height of the dungeon cannot be less than 8" << endl;
         cout << "Enter the width of the dungeon again: "; cin >> width;
         cout << "Enter the height of the dungeon again: "; cin >> height;
@@ -71,7 +71,7 @@ int main ()
     *   ADD YOUR CODE HERE IF REQUIRED
     */
 
-    Point startPoint(1,1);
+    Point startPoint(1,1); // taking the starting point as (1, 1) because the first row and column are the boundary walls
     Point exitPoint(0,0);
     char* dungeon = nullptr;
     dungeon = CreateDungeon(width, height, startPoint, exitPoint);
@@ -91,7 +91,7 @@ void TrapStatements()
     *   ADD YOUR CODE HERE AS REQUIRED
 
     */
-   int r = rand() % 2;
+   int r = rand() % 2;//randomizing statements
    if(r==0){
        cout<<"You have hit a trap!"<<endl;
    }
@@ -109,7 +109,7 @@ void FoodStatements()
     /*
     *   ADD YOUR CODE HERE AS REQUIRED
     */
-   int r = rand()%2;
+   int r = rand()%2;//randomizing statements
    if(r==0){
        cout<<"Picked up energy drink!!"<<endl;
    }
@@ -121,48 +121,13 @@ void FoodStatements()
    }
 }
 
-void TrapStatements()
-{
-    /*
-    *   ADD YOUR CODE HERE AS REQUIRED
-
-    */
-   int r = rand() % 2;
-   if(r==0){
-       cout<<"You have hit a trap!"<<endl;
-   }
-   else if(r==1){
-       cout<<"You fell in a hole!"<<endl;
-   }
-   else{
-       cout<<"You were abducted by aliens!!"<<endl;
-   } 
-}
-
-
-void FoodStatements()
-{
-    /*
-    *   ADD YOUR CODE HERE AS REQUIRED
-    */
-   int r = rand()%2;
-   if(r==0){
-       cout<<"Picked up energy drink!!"<<endl;
-   }
-   else if (r==1){
-       cout<<"Picked up Krazy Hamborger!!"<<endl;
-   }
-   else{
-    cout<<"You ate DzNuts(Dried Fruit)!!"<<endl;
-   }
-}
 
 void HitStatements()
 {
     /*
     *   ADD YOUR CODE HERE AS REQUIRED
     */
-   int r = rand()%2;
+   int r = rand()%2;//randomizing statements
    if (r==0){
        cout<<"You win!!FATALITY!"<<endl;
    } 
@@ -179,7 +144,7 @@ void GetHitStatements()
     /*
     *   ADD YOUR CODE HERE AS REQUIRED
     */
-   int r = rand()%2;
+   int r = rand()%2;//randomizing statements
    if (r==0){
        cout<<"You got RKO'd outta nowhere"<<endl;
    } 
@@ -198,17 +163,17 @@ void Traversal(char* dungeon, Point& startPoint, cPoint& exitPoint, cint width, 
     */
    char direction, location;
    Player P;
-   P.x = startPoint.x; P.y = startPoint.y;
+   P.x = startPoint.x; P.y = startPoint.y; //initial position is the top left corner
    while (true){
         cout << "Which direction would you like to move in: \n";
-        cout << "W to go up \nS to go down \nD to go right \nA to go left \nPress X if you want to give up and die.\n";
+        cout << "W to go up \nS to go down \nD to go right \nA to go left \nPress X if you want to give up and die.\n"; //asking for input
         cin >> direction;
-        if ((direction == 'w') |(direction == 'W')){
+        if ((direction == 'w') |(direction == 'W')){ //identifying key presses
             if (dungeon[(P.y - 1)*width + P.x] != 'W'){
                 location = dungeon[(P.y - 1)*width + P.x];
                 cout << "Possible move up, " << location << endl;
                 P.y--;
-                if (location == 'T'){
+                if (location == 'T'){ //calling trapstatements because you've walked into a trap
                     P.health--;
                     TrapStatements();
                     cout << "You have " << P.health << " health left\n";
@@ -225,19 +190,19 @@ void Traversal(char* dungeon, Point& startPoint, cPoint& exitPoint, cint width, 
                     P.food += food;
                     FoodStatements();
                 }
-                else if (location == 'E'){
+                else if (location == 'E'){ //calling combat since enemies have been encountered
                     Combat(P, rand () % 3 + 2);
                 }
                 else if (location == 'X'){
                     cout << "You won!" << endl;
-                    break;
+                    break; //breaking since the game has been won
                 }
             }
             else{
-                cout << "Cant go there!" <<endl;
+                cout << "Cant go there!" <<endl; //way blocked by a wall
             }
         }
-        else if ((direction == 'd') |(direction == 'D')){
+        else if ((direction == 'd') |(direction == 'D')){ //identifying key presses
             if (dungeon[(P.y)*width + (P.x + 1)] != 'W'){
                 location = dungeon[(P.y)*width + (P.x + 1)];
                 cout << "Possible move right, " << location << endl;
@@ -271,7 +236,7 @@ void Traversal(char* dungeon, Point& startPoint, cPoint& exitPoint, cint width, 
                 cout << "Cant go there!" <<endl;
             }
         }
-        else if ((direction == 's') |(direction == 'S')){
+        else if ((direction == 's') |(direction == 'S')){ //identifying key presses
             if (dungeon[(P.y + 1)*width + P.x] != 'W'){
                 location = dungeon[(P.y + 1)*width + P.x];
                 cout << "Possible move down, " << location << endl;
@@ -305,7 +270,7 @@ void Traversal(char* dungeon, Point& startPoint, cPoint& exitPoint, cint width, 
                 cout << "Cant go there!" <<endl;
             }
         }
-        else if ((direction == 'a') |(direction == 'A')){
+        else if ((direction == 'a') |(direction == 'A')){ //identifying key presses
             if (dungeon[(P.y)*width + (P.x - 1)] != 'W'){
                 location = dungeon[(P.y)*width + (P.x - 1)];
                 cout << "Possible move left, " << location << endl;
@@ -339,29 +304,29 @@ void Traversal(char* dungeon, Point& startPoint, cPoint& exitPoint, cint width, 
                 cout << "Cant go there!" <<endl;
             }
         }
-        else if ((direction == 'x') | (direction == 'X')){
+        else if ((direction == 'x') | (direction == 'X')){ //identifying key presses
             P.alive = false;
             cout << "You died!" << endl;
             break;
         }
-        else{
+        else{ //in case there are any invalid key presses
             cout << "Please enter a valid command" << endl;
         }
-        P.food--;
+        P.food--; //consuming 1 food per move
         cout << "You have food for " << P.food << " more turn(s)" << endl;
-        if (P.food == 0){
+        if (P.food == 0){//checking if food is left or not
             P.alive = false;
             cout << "You ran out of food and starved to death!" << endl;
             break;
         }
-        if (P.health == 0){
+        if (P.health == 0){//checking if health is left or not
             P.alive = false;
             cout << "Your health ended, you're dead!" <<endl;
             break;
         }
    }
    //exitPoint.x = P.x; exitPoint.y = P.y;
-   cout << "Game Ended!" << endl;
+   cout << "Game Ended!" << endl; //when the loop ends/breaks the game ends 
 }
 
 void Combat(Player& player, int enemies)
@@ -387,12 +352,12 @@ char *CreateDungeon(int width, int height,Point &startPoint, Point &exitPoint)
    dungeon = new char [width*height];
    int bruh;
    for (int i = 0; i < width*height; i++){
-       dungeon[i] = ' ';
+       dungeon[i] = ' '; //to get rid of any garbage values that may occur at empty spaces
    }
    for (int i = 0; i < width*height; i++){
        bruh = i%width;
        //cout << bruh << ", " << i << endl;
-       if ((i < width) | (bruh == 0) | (bruh == (width - 1)) | (i > width*(height - 1))){
+       if ((i < width) | (bruh == 0) | (bruh == (width - 1)) | (i > width*(height - 1))){ //creating boundary walls
             dungeon[i] = 'W';
        }
        else if ((rand () % 5 + 1) == 1){
@@ -400,23 +365,23 @@ char *CreateDungeon(int width, int height,Point &startPoint, Point &exitPoint)
             //cout << "bruh" <<endl;
             var2 = rand () % 100;
             if (var2 < 16)
-                dungeon[i] = 'E';
+                dungeon[i] = 'E'; //randomizing enemies
             else if (var2 > 15 and var2 < 31)
-                dungeon[i] = 'H';
+                dungeon[i] = 'H'; //randomizing health packs
             else if (var2 > 30 and var2 < 46)
-                dungeon[i] = 'T';
+                dungeon[i] = 'T'; //randomizing traps
             else if (var2 > 45 and var2 < 61)
-                dungeon[i] = 'F';
+                dungeon[i] = 'F'; //randomizing food
             else 
-                dungeon[i] = 'W';
+                dungeon[i] = 'W'; //randomizing walls
        }
    }
-   dungeon[width + 1] = 'P';
-   dungeon[width*height - width - 2] = 'X';
+   dungeon[width + 1] = 'P'; //setting the initial position at the top left corner
+   dungeon[width*height - width - 2] = 'X'; //setting the edit at the bottom right corner
    return dungeon;
 }
 
-void display(char* dungeon, cint width, cint height){
+void display(char* dungeon, cint width, cint height){ //function to help code the game
     for (int i = 0; i < width*height; i ++){
         if ((i !=0) & (i%(width) == 0)){
             cout << endl;
