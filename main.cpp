@@ -131,9 +131,10 @@ char* CreateDungeon(int width, int height, Point& ref_startPoint, Point& ref_exi
     *   ADD YOUR CODE HERE AS REQUIRED. DEFINE NEW FUNCTIONS IF IT GETS LONG.
     */
    char dungeon[width*height];
-   for (int i = 0; i > width*height; i++){
-       if (int i = 1 == rand () % 5){
-           
+   for (int i = 0; i < width*height; i++){
+       if (rand () % 5 == 1){
+           cout << "bruh" <<endl;
        }
    }
+
 }
