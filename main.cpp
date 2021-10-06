@@ -91,7 +91,7 @@ void TrapStatements()
     *   ADD YOUR CODE HERE AS REQUIRED
 
     */
-   int r = rand() % 2;//randomizing statements
+   int r = rand() % 3;//randomizing statements
    if(r==0){
        cout<<"You have hit a trap!"<<endl;
    }
@@ -109,7 +109,7 @@ void FoodStatements()
     /*
     *   ADD YOUR CODE HERE AS REQUIRED
     */
-   int r = rand()%2;//randomizing statements
+   int r = rand()%3;//randomizing statements
    if(r==0){
        cout<<"Picked up energy drink!!"<<endl;
    }
@@ -127,7 +127,7 @@ void HitStatements()
     /*
     *   ADD YOUR CODE HERE AS REQUIRED
     */
-   int r = rand()%2;//randomizing statements
+   int r = rand()%3;//randomizing statements
    if (r==0){
        cout<<"You win!!FATALITY!"<<endl;
    } 
@@ -144,7 +144,7 @@ void GetHitStatements()
     /*
     *   ADD YOUR CODE HERE AS REQUIRED
     */
-   int r = rand()%2;//randomizing statements
+   int r = rand()%3;//randomizing statements
    if (r==0){
        cout<<"You got RKO'd outta nowhere"<<endl;
    } 
