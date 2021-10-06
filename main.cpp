@@ -341,13 +341,13 @@ void Combat(Player &player, int enemies)
     //Player p1;
     // int enemy = rand()%2 + 2;
     // enemies +=enemy;
-    int var, e_dead = 0;
+    int var, e_dead = 0; //keeping track of enemies dead
     while (enemies>0 & player.alive)
     {
         var = rand() % 3;
         if (var == 1)
         {
-            HitStatements();
+            HitStatements(); //enemy takes hit
             enemies--; e_dead++;
             cout << e_dead << " enem(ies) down " << enemies << " to go" << endl;
         }
@@ -355,10 +355,10 @@ void Combat(Player &player, int enemies)
         if (var == 2)
         {
             player.health--;
-            GetHitStatements();
+            GetHitStatements(); //player takes hit
             cout << "You have " << player.health << " health left!" << endl;
         }
-        if (player.health == 0){
+        if (player.health == 0){ //player dies
             player.alive = false;
         }
     }
