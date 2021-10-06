@@ -54,7 +54,7 @@ void TrapStatements();  //3 statements that show at random when the player activ
 void FoodStatements();  //3 statements that show at random when the player finds food
 void HitStatements();   //3 statements that show at random when the player hits enemy
 void GetHitStatements();//3 statements that show at random when the player gets hit
-void display(char* dungeon, cint width, cint height);
+//void display(char* dungeon, cint width, cint height);
 int main ()
 {
     srand(time(0));
@@ -75,7 +75,7 @@ int main ()
     Point exitPoint(0,0);
     char* dungeon = nullptr;
     dungeon = CreateDungeon(width, height, startPoint, exitPoint);
-    display(dungeon, width, height);
+    //display(dungeon, width, height);
     Traversal(dungeon, startPoint, exitPoint, width, height);
 
     /*
@@ -405,12 +405,12 @@ char *CreateDungeon(int width, int height,Point &startPoint, Point &exitPoint)
    return dungeon;
 }
 
-void display(char* dungeon, cint width, cint height){ //function to help code the game
-    for (int i = 0; i < width*height; i ++){
-        if ((i !=0) & (i%(width) == 0)){
-            cout << endl;
-        }
-        cout << dungeon[i] << " ";
-    }
-    cout << endl;
-}
+// void display(char* dungeon, cint width, cint height){ //function to help code the game
+//     for (int i = 0; i < width*height; i ++){
+//         if ((i !=0) & (i%(width) == 0)){
+//             cout << endl;
+//         }
+//         cout << dungeon[i] << " ";
+//     }
+//     cout << endl;
+// }
